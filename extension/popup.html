@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root { --bg:#0f172a; --panel:#111c33; --line:#26344f; --text:#e5e9f2; --muted:#94a3b8; --accent:#3b82f6; --err:#f87171; }
+    * { box-sizing:border-box; }
+    body { margin:0; width:320px; background:var(--bg); color:var(--text); font:13px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .wrap { padding:14px; display:grid; gap:10px; }
+    h1 { font-size:14px; margin:0; display:flex; align-items:center; gap:8px; }
+    h1 img { width:18px; height:18px; }
+    button { font:inherit; width:100%; padding:9px 12px; border-radius:8px; border:1px solid var(--line); background:#1a2540; color:var(--text); cursor:pointer; text-align:left; }
+    button:hover { border-color:#3b4d74; }
+    button.primary { background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600; }
+    button small { display:block; font-weight:400; opacity:.8; font-size:11.5px; margin-top:1px; }
+    .saved { font-size:12px; color:var(--muted); background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:7px 9px; display:none; }
+    .saved code { color:#cbd5e1; word-break:break-all; font-size:11px; }
+    .saved a { color:#93c5fd; cursor:pointer; margin-left:4px; }
+    details { border-top:1px solid var(--line); padding-top:8px; }
+    summary { cursor:pointer; color:var(--muted); }
+    .grid { display:grid; gap:7px; margin-top:8px; }
+    label { display:flex; gap:8px; align-items:center; }
+    label.row { justify-content:space-between; }
+    input[type=number], input[type=text], select { font:inherit; color:var(--text); background:#1a2540; border:1px solid var(--line); border-radius:6px; padding:3px 6px; }
+    input[type=number] { width:78px; }
+    input[type=text] { width:150px; }
+    .hint { color:var(--muted); font-size:11.5px; }
+    #err { color:var(--err); font-size:12px; display:none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1><img src="icons/32.png" alt="">Clean Full-Page Capture</h1>
+
+    <button id="auto" class="primary">Capture page<small id="autoHint">Auto-detects the scrolling content</small></button>
+    <button id="pick">Pick area, then capture<small>Click the exact part to keep</small></button>
+    <div class="saved" id="saved">Saved area for this site:<br><code id="savedSel"></code><a id="forget">Forget</a></div>
+    <div id="err"></div>
+
+    <details>
+      <summary>Settings</summary>
+      <div class="grid">
+        <label><input type="checkbox" data-k="pdfAuto"> Save PDF automatically</label>
+        <label class="row">PDF layout
+          <select data-k="pdfLayout">
+            <option value="continuous">One continuous page</option>
+            <option value="a4-landscape">A4 landscape</option>
+            <option value="a4-portrait">A4 portrait</option>
+          </select>
+        </label>
+        <label class="row">PDF image
+          <select data-k="pdfImage">
+            <option value="lossless">Lossless (sharp text)</option>
+            <option value="jpeg">JPEG (smaller)</option>
+          </select>
+        </label>
+        <label><input type="checkbox" data-k="alsoPng"> Also save PNG</label>
+        <label><input type="checkbox" data-k="saveAs"> Ask where to save</label>
+        <label class="row">Downloads sub-folder <input type="text" data-k="folder"></label>
+        <label><input type="checkbox" data-k="hideOverlays"> Hide fixed headers, navs, bottom bars</label>
+        <label><input type="checkbox" data-k="preload"> Pre-scroll to load lazy content</label>
+        <label><input type="checkbox" data-k="waitRender"> Wait for charts to finish loading</label>
+        <label><input type="checkbox" data-k="rememberPick"> Remember picked area per site</label>
+        <label class="row">Delay per step (ms) <input type="number" min="0" max="5000" step="50" data-k="delay"></label>
+        <div class="hint">Shortcuts: Alt+Shift+S capture · Alt+Shift+A pick area. Esc cancels a running capture.</div>
+      </div>
+    </details>
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

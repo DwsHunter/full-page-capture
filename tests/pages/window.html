@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset=utf-8><style>
+body{margin:0;padding-top:48px;background:#101010}
+#hdr{position:fixed;top:0;left:0;right:0;height:48px;background:#ff0000;z-index:10}
+#nav{position:fixed;top:48px;left:0;bottom:0;width:48px;background:#00ff00;z-index:10}
+#main{margin-left:48px}
+#query{position:sticky;top:48px;height:30px;background:#ff00ff;z-index:5}
+#dash{background:#202020}
+#enc{display:block;width:800px;height:3000px}
+.lazy{height:400px;background:#444}
+#foot{height:23px;background:#123456}
+#bottom{position:fixed;left:48px;right:0;bottom:0;height:40px;background:#0000ff;z-index:10}
+</style></head><body>
+<div id=hdr></div><div id=nav></div>
+<div id=main><div id=query></div>
+  <div id=dash><canvas id=enc></canvas><div class=lazy></div><div id=foot></div></div>
+</div>
+<div id=bottom></div>
+<script src=common.js></script><script>drawEncoded(document.getElementById('enc'));lazyPanels();</script>
+<script>// ?known: mark #dash as a known app content area (built-in selector list)
+if (location.search.includes('known')) document.getElementById('dash').setAttribute('data-test-subj', 'dshDashboardViewport');
+// ?stuck: a loading marker that never clears, visible on every screen (same colour as the page)
+if (location.search.includes('stuck')) document.body.insertAdjacentHTML('beforeend', '<div aria-busy="true" style="position:absolute;right:4px;top:0;width:6px;height:3400px;background:#101010"></div>');</script>
+</body></html>

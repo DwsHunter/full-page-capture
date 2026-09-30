@@ -1,0 +1,22 @@
+{
+  "name": "clean-full-page-capture",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Browser extension: full-page screenshots of just the page content (no browser UI, fixed headers, side navs or bottom bars), stitched without duplicates and saved as PDF. Works with web apps that scroll inside containers and load content lazily.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "test": "node tests/run.mjs",
+    "package": "node scripts/package.mjs"
+  },
+  "devDependencies": {
+    "@sparticuz/chromium": "153.0.0",
+    "adm-zip": "0.6.1",
+    "pngjs": "7.0.0",
+    "puppeteer-core": "25.12.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

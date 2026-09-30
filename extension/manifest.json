@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Clean Full-Page Capture",
+  "version": "1.0.0",
+  "description": "Full-page screenshot of just the page content (no browser UI, fixed headers, side navs or bottom bars), stitched without duplicates and saved as PDF.",
+  "permissions": ["activeTab", "scripting", "storage", "downloads"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": {
+    "default_title": "Clean Full-Page Capture",
+    "default_popup": "popup.html",
+    "default_icon": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png" }
+  },
+  "icons": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png" },
+  "commands": {
+    "capture-auto": {
+      "suggested_key": { "default": "Alt+Shift+S" },
+      "description": "Capture page (saved area, or auto-detect)"
+    },
+    "capture-pick": {
+      "suggested_key": { "default": "Alt+Shift+A" },
+      "description": "Pick an area, then capture"
+    }
+  }
+}

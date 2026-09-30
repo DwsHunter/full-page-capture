@@ -1,0 +1,47 @@
+<!doctype html><html><head><meta charset=utf-8><title>Demo dashboard</title><style>
+html,body{margin:0;height:100%;overflow:hidden;background:#07101f;color:#dfe5ef;font:14px system-ui,sans-serif}
+.hdr{position:fixed;top:0;left:0;right:0;height:48px;background:#0b1628;border-bottom:1px solid #1f2b44;display:flex;align-items:center;gap:12px;padding:0 16px;z-index:9}
+.hdr .crumb{color:#7aa7ff}.nav{position:fixed;top:49px;left:0;bottom:0;width:48px;background:#0b1628;border-right:1px solid #1f2b44;z-index:9}
+.app{position:absolute;top:49px;left:49px;right:0;bottom:0;overflow:auto}
+.topnav{height:48px;display:flex;justify-content:flex-end;gap:18px;align-items:center;padding:0 18px;border-bottom:1px solid #1f2b44}
+.query{position:sticky;top:0;z-index:5;background:#0b1628;height:44px;display:flex;align-items:center;padding:0 12px;border-bottom:1px solid #1f2b44}
+.query div{flex:1;height:30px;border:1px solid #2b3a5a;border-radius:4px;color:#6f7d99;display:flex;align-items:center;padding-left:10px}
+.grid{padding:16px 24px 24px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.p{background:#0d1a30;border:1px solid #1f2b44;border-radius:6px;padding:12px 14px;min-height:120px}
+.full{grid-column:1/-1}.p h3{margin:0 0 10px;font-size:14px;font-weight:600}
+h1{font-size:30px;margin:10px 0}.big{font-size:38px;font-weight:300;margin:6px 0 20px}
+.kpis{display:flex;gap:40px;margin-top:4px}.kpi b{display:block;font-size:26px;font-weight:600}.kpi span{color:#8a97b1;font-size:13px}
+.pie{width:300px;height:300px;border-radius:50%;margin:10px auto}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;font-size:12px;color:#aab6cc}.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+table{width:100%;border-collapse:collapse}td,th{padding:9px;border-bottom:1px solid #1f2b44;text-align:left}td.n,th.n{text-align:right}
+.bottom{position:fixed;left:49px;right:0;bottom:0;height:40px;background:#0b1628;border-top:1px solid #1f2b44;display:flex;align-items:center;padding-left:16px;color:#7aa7ff;z-index:9}
+</style></head><body>
+<div class=hdr><b>demo</b><span class=crumb>Dashboards</span> / Café Sales — demo</div><div class=nav></div>
+<div class=app>
+ <div class=topnav><span>Share</span><span>Export</span><span>Edit</span></div>
+ <div class=query><div>Search or filter…</div></div>
+ <main id="content"><div class=grid>
+  <div class="p full"><h1>Café Sales — Weekly Overview (demo)</h1></div>
+  <div class="p full"><div class=big>This week at a glance</div>
+   <div class=kpis><div class=kpi><b>4,812</b><span>orders</span></div><div class=kpi><b>$27,340</b><span>revenue</span></div><div class=kpi><b>$5.68</b><span>average ticket</span></div><div class=kpi><b>4.7 ★</b><span>rating</span></div></div></div>
+  <div class=p><h3>Sales by Category</h3><div class=pie style="background:conic-gradient(#1f3c88 0 38%,#54b3b8 0 58%,#d36b7d 0 72%,#f4a261 0 84%,#ffd166 0 93%,#6a7fb5 0)"></div>
+   <div class=legend><span><i style="background:#1f3c88"></i>Coffee</span><span><i style="background:#54b3b8"></i>Tea</span><span><i style="background:#d36b7d"></i>Pastries</span><span><i style="background:#f4a261"></i>Sandwiches</span><span><i style="background:#ffd166"></i>Juices</span><span><i style="background:#6a7fb5"></i>Other</span></div></div>
+  <div class=p><h3>Orders by Channel</h3><div class=pie style="background:conic-gradient(#1f3c88 0 46%,#7ddfd1 0 71%,#f9967a 0 89%,#e5508f 0)"></div>
+   <div class=legend><span><i style="background:#1f3c88"></i>In-store</span><span><i style="background:#7ddfd1"></i>Mobile app</span><span><i style="background:#f9967a"></i>Delivery</span><span><i style="background:#e5508f"></i>Drive-thru</span></div></div>
+  <div class="p full"><h3>Top 10 Products</h3><table><tr><th>Product</th><th>Category</th><th>Size</th><th class=n>Price</th><th class=n>Sold</th><th class=n>Revenue</th></tr>
+   <script>
+    const items=[['Flat White','Coffee','Regular',4.5,612],['Iced Latte','Coffee','Large',5.25,540],['Butter Croissant','Pastries','—',3.25,498],['Cappuccino','Coffee','Regular',4.25,455],['Cold Brew','Coffee','Large',4.75,402],['Chicken Panini','Sandwiches','—',8.5,288],['Matcha Latte','Tea','Regular',5,251],['Blueberry Muffin','Pastries','—',3.5,236],['Orange Juice','Juices','Small',3.75,190],['Chai Latte','Tea','Regular',4.75,174]];
+    for(const [n,c,s,p,q] of items)document.write(`<tr><td>${n}</td><td>${c}</td><td>${s}</td><td class=n>$${p.toFixed(2)}</td><td class=n>${q}</td><td class=n>$${(p*q).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td></tr>`);
+   </script></table></div>
+  <script>for(const b of ['Downtown','Riverside','Old Town','University','Airport','Harbour'])document.write(`<div class="p lazyp" style="height:260px"><h3>Daily sales — ${b}</h3></div>`)</script>
+  <div class="p full" style="height:420px"><h3>Orders per hour</h3><svg width=100% height=360 viewBox="0 0 1000 360" preserveAspectRatio=none><polyline fill=none stroke=#54b3b8 stroke-width=3 points="0,320 80,200 160,90 240,120 320,210 400,240 480,140 560,110 640,200 720,250 800,230 880,290 1000,320"/></svg></div>
+ </div></main>
+</div>
+<div class=bottom>Last updated 10:26 · Auto-refresh off</div>
+<script>
+// Panels render only once scrolled into view and flag aria-busy while loading.
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting||e.target.dataset.done)return;e.target.dataset.done=1;e.target.setAttribute('aria-busy','true');
+const s=document.createElement('div');s.className='spinner';s.textContent='loading…';e.target.appendChild(s);
+setTimeout(()=>{s.remove();e.target.insertAdjacentHTML('beforeend','<div style="height:190px;background:linear-gradient(90deg,#1f3c88,#54b3b8);border-radius:4px"></div>');e.target.setAttribute('aria-busy','false')},600)}));
+document.querySelectorAll('.lazyp').forEach(p=>io.observe(p));
+</script></body></html>

@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset=utf-8><style>
+html,body{margin:0;height:100%;overflow:hidden;background:#101010}
+#hdr{position:fixed;top:0;left:0;right:0;height:48px;background:#ff0000;z-index:10}
+#nav{position:fixed;top:48px;left:0;bottom:0;width:48px;background:#00ff00;z-index:10}
+#app{position:absolute;top:48px;left:48px;right:0;bottom:0;overflow:auto;background:#202020}
+#toolbar{height:60px;background:#ffff00}
+#sticky{position:sticky;top:0;height:30px;background:#ff00ff;z-index:5}
+#dash{background:#202020;padding:0}
+#enc{display:block;width:800px;height:5000px}
+.lazy{height:400px;background:#444}
+#foot{height:37px;background:#123456}
+#bottom{position:fixed;left:48px;right:0;bottom:0;height:40px;background:#0000ff;z-index:10}
+#overlay{position:absolute;right:10px;top:60px;width:50px;height:50px;background:#00ffff;z-index:20}
+</style></head><body>
+<div id=hdr></div><div id=nav></div>
+<div id=app>
+  <div id=toolbar></div>
+  <div id=sticky></div>
+  <main id=dash><h1 style="display:none">Weekly Sales (demo)</h1>
+    <canvas id=enc></canvas><div class=lazy></div><div id=foot></div>
+  </main>
+</div>
+<div id=overlay></div>
+<div id=bottom></div>
+<script src=common.js></script><script>drawEncoded(document.getElementById('enc'));lazyPanels('aria-busy');</script>
+</body></html>
